@@ -16,6 +16,8 @@ Assumptions:
 Usage:
 ******
 
-/usr/bin/backup wp1
+/usr/bin/backup $hostname $backup_path $apps_path
 
-wp1 is the name you want to provide to the folder where the backups will be stored.
+$hostname is the name you want to provide to the folder where the backups will be stored.
+$backup_path folder where the backups will be saved
+$apps_path locations of the wordpress applications

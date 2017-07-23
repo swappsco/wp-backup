@@ -62,3 +62,16 @@ Specify in the crontab the command to run to the required time. In this example 
     0 3 * * * /usr/bin/backup hostname daily
     0 4 * * 0 /usr/bin/backup hostname weekly
     0 5 1 * 6 /usr/bin/backup hostname monthly
+
+********************************
+Email notifications with mailgun
+********************************
+
+Create a file `~/.backupvars` and include the information for mail notifications, for example:
+
+.. code-block:: bash
+    
+    MAILGUN_API_KEY="key-API"
+    MAILGUN_DOMAIN="example.com"
+    MAILGUN_EMAIL_FROM="Backups<backups@example.com"
+    MAILGUN_EMAIL_TO="devops@example.com"

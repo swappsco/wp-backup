@@ -1,10 +1,12 @@
 #!/bin/bash
+source $HOME/.backupvars
 DAY=$(date +"%a")
 HOSTNAME=$1
 FOLDER_TO_STORE=${2-DAY}
 LOCAL_BACKUPS_PATH=${3-"/home/ubuntu/backups/auto"}
 DESTINATION_BACKUPS_PATH=${4-"/mnt/disk/backups/auto"}
 PROJECTS_FOLDER=${5-"/srv/apps"}
+NOW=`date`
 
 for f in $PROJECTS_FOLDER/*; do
   if [ -d "$f" ]; then
@@ -23,5 +25,16 @@ for f in $PROJECTS_FOLDER/*; do
      fi
   fi
 
-rm -rf $LOCAL_BACKUPS_PATH
 done
+
+rm -rf $LOCAL_BACKUPS_PATH
+
+if [ -n "$MAILGUN_API_KEY" ]; then
+  curl -s --user "api:$MAILGUN_API_KEY" \
+      "https://api.mailgun.net/v3/$MAILGUN_DOMAIN/messages" \
+      -F from="$MAILGUN_EMAIL_FROM" \
+      -F to="$MAILGUN_EMAIL_TO" \
+      -F subject="$FOLDER_TO_STORE backup completed" \
+      -F text="Hey there,  The $FOLDER_TO_STORE backup for $HOSTNAME was completed at $NOW"
+fi
+

@@ -32,9 +32,9 @@ Full Version
 
     backup $HOSTNAME $FOLDER_TO_STORE $LOCAL_BACKUPS_PATH $DESTINATION_BACKUPS_PATH $PROJECTS_FOLDER
 
-* **HOSTNAME** is the name you want to provide to the folder where the backups will be stored.
-* **FOLDER_TO_STORE** name of the folder where the backup will be saved (e.g daily, monthly, my_custom_name)
-* **LOCAL_BACKUPS_PATH** temp folder where backups will be saved
+* **$HOSTNAME** is the name you want to provide to the folder where the backups will be stored.
+* **$FOLDER_TO_STORE** name of the folder where the backup will be saved (e.g daily, monthly, my_custom_name)
+* **$LOCAL_BACKUPS_PATH** temp folder where backups will be saved
 * **$DESTINATION_BACKUPS_PATH** folder where the backups will be saved
 * **$PROJECTS_FOLDER** location path of the wordpress applications
 

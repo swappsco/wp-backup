@@ -16,12 +16,12 @@ for f in $PROJECTS_FOLDER/*; do
         echo $project_name
         mkdir -p $LOCAL_BACKUPS_PATH/$FOLDER_TO_STORE
         wp db export $LOCAL_BACKUPS_PATH/$project_name.sql
-  echo $LOCAL_BACKUPS_PATH/$FOLDER_TO_STORE/files_$project_name.tgz
-  tar czvf $LOCAL_BACKUPS_PATH/$FOLDER_TO_STORE/files_$project_name.tgz . -P --exclude='*.tgz' --exclude='*.sql' --exclude='*.gz' --exclude='*.zip' --exclude='*.tar' --exclude='*.sql' --exclude='*.zip' --exclude='wp-content/cache/*' --exclude='.git/*'
-  tar czvf $LOCAL_BACKUPS_PATH/$FOLDER_TO_STORE/db_$project_name.tgz $LOCAL_BACKUPS_PATH/$project_name.sql
-  ssh backup mkdir -p $DESTINATION_BACKUPS_PATH/$HOSTNAME/$FOLDER_TO_STORE
-  scp $LOCAL_BACKUPS_PATH/$FOLDER_TO_STORE/files_$project_name.tgz backup:$DESTINATION_BACKUPS_PATH/$HOSTNAME/$FOLDER_TO_STORE/
-  scp $LOCAL_BACKUPS_PATH/$FOLDER_TO_STORE/db_$project_name.tgz backup:$DESTINATION_BACKUPS_PATH/$HOSTNAME/$FOLDER_TO_STORE/
+        echo $LOCAL_BACKUPS_PATH/$FOLDER_TO_STORE/files_$project_name.tgz
+        tar czvf $LOCAL_BACKUPS_PATH/$FOLDER_TO_STORE/files_$project_name.tgz . -P --exclude='*.tgz' --exclude='*.sql' --exclude='*.gz' --exclude='*.zip' --exclude='*.tar' --exclude='*.sql' --exclude='*.zip' --exclude='wp-content/cache/*' --exclude='.git/*'
+        tar czvf $LOCAL_BACKUPS_PATH/$FOLDER_TO_STORE/db_$project_name.tgz $LOCAL_BACKUPS_PATH/$project_name.sql
+        ssh backup mkdir -p $DESTINATION_BACKUPS_PATH/$HOSTNAME/$FOLDER_TO_STORE
+        scp $LOCAL_BACKUPS_PATH/$FOLDER_TO_STORE/files_$project_name.tgz backup:$DESTINATION_BACKUPS_PATH/$HOSTNAME/$FOLDER_TO_STORE/
+        scp $LOCAL_BACKUPS_PATH/$FOLDER_TO_STORE/db_$project_name.tgz backup:$DESTINATION_BACKUPS_PATH/$HOSTNAME/$FOLDER_TO_STORE/
      fi
   fi
 
